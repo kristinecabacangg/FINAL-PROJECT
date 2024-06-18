@@ -1,0 +1,41 @@
+def convert_mm_to_cm(mm):
+    return mm / 10
+
+def convert_ft_to_m(ft):
+    return ft / 3.281
+
+def convert_inch_to_cm(inch):
+    return inch * 2.54
+
+def convert_km_to_miles(km):
+    return km / 1.609
+
+def convert_lbs_to_kg(lbs):
+    return lbs / 2.205
+
+conversion_functions = {
+    '1': convert_mm_to_cm,
+    '2': convert_ft_to_m,
+    '3': convert_inch_to_cm,
+    '4': convert_km_to_miles,
+    '5': convert_lbs_to_kg
+}
+
+menu = """
+Measurement Converter Menu:
+1. Millimeters to Centimeters
+2. Feet to Meters
+3. Inches to Centimeters
+4. Kilometers to Miles
+5. Pounds to Kilograms
+"""
+
+print(menu)
+choice = input("Choose the conversion you want (1-5): ")
+value = float(input("Enter the value you want to convert: "))
+
+if choice in conversion_functions:
+    result = conversion_functions[choice](value)
+    print(f"The converted value is: {result}")
+else:
+    print("Invalid choice.")
