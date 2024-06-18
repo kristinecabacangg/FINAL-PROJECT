@@ -1,0 +1,38 @@
+class Quiz:
+    def __init__(self, questions):
+        self.questions = questions
+        self.score = 0
+        self.user_answers = []
+
+    def ask_question(self, question):
+        print(question['prompt'])
+        user_answer = input("Enter your answer: ")
+        self.user_answers.append(user_answer)
+        if user_answer.lower() == question['answer'].lower():
+            self.score += 1
+            print("May tama ka!")
+        else:
+            print(f"Ligwak! mali imo answer! Balik grade 1: {question['answer']}")
+
+    def start(self):
+        for q in self.questions:
+            self.ask_question(q)
+        print(f"Quiz completed! Your score is: {self.score}/{len(self.questions)}")
+
+    def review_answers(self):
+        for i, q in enumerate(self.questions):
+            print(f"Q{i+1}: {q['prompt']}")
+            print(f"Your answer: {self.user_answers[i]}")
+            print(f"Correct answer: {q['answer']}\n")
+
+questions = [
+    {"prompt": "Which animal is known as the 'Ship of the Desert?", "answer": "Camel"},
+    {"prompt": "Name the National bird of India?", "answer": "Peacock"},
+    {"prompt": "What is the chemical symbol for Gold?", "answer": "Au"},
+    {"prompt": "What is the national bird of the United States?", "answer": "Eagle"},
+    {"prompt": "What is the smallest prime number?", "answer": "2"}
+]
+
+quiz = Quiz(questions)
+quiz.start()
+quiz.review_answers()
