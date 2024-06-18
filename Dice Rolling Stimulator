@@ -1,0 +1,41 @@
+import random
+
+def roll_dice():
+    return random.randint(1, 6)
+
+def play_round(player_name):
+    input(f"{player_name}, press Enter to roll the dice...")
+    return roll_dice()
+
+def play_game():
+    pula_score = 0
+    puti_score = 0
+    rounds_played = 0
+
+    while pula_score < 2 and puti_score < 2:
+        print(f"Round {rounds_played + 1}:")
+        pula_roll = play_round("Pula")
+        puti_roll = play_round("Puti")
+
+        print(f"Pula rolled: {pula_roll}")
+        print(f"Puti rolled: {puti_roll}")
+
+        if pula_roll > puti_roll:
+            print("Pula wins this round!")
+            pula_score += 1
+        elif puti_roll > pula_roll:
+            print("Puti wins this round!")
+            puti_score += 1
+        else:
+            print("It's a tie!")
+
+        rounds_played += 1
+        print(f"Score: Pula - {pula_score} | Puti - {puti_score}\n")
+
+    if pula_score == 2:
+        print("Pula wins the game!")
+    else:
+        print("Puti wins the game!")
+
+play_game()
+
