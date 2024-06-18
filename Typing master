@@ -1,0 +1,19 @@
+import time
+
+def typing_test():
+    sample_text = "Give papa a cup of proper coffee in a copper coffee cup."
+    print("Type this text as fast as you can and press Enter when done:")
+    print(sample_text)
+
+    input("Press Enter to start...")
+    start_time = time.time()
+    user_input = input()
+    end_time = time.time()
+
+    time_taken = end_time - start_time
+    accuracy = sum(1 for expected, actual in zip(sample_text, user_input) if expected == actual) / len(sample_text)
+
+    print(f"Time taken: {time_taken:.2f} seconds")
+    print(f"Accuracy: {accuracy:.2%}")
+
+typing_test()
